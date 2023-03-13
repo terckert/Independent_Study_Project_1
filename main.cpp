@@ -9,10 +9,10 @@ DigitalInOut row2(LEDM_ROW2_PIN, PIN_OUTPUT, PullDown, 0);
 DigitalInOut row3(LEDM_ROW3_PIN, PIN_OUTPUT, PullDown, 0);
 DigitalInOut row4(LEDM_ROW4_PIN, PIN_OUTPUT, PullDown, 0);
 
-DigitalInOut col1(LEDM_COL1_PIN, PIN_OUTPUT, PullUp, 1);
-DigitalInOut col2(LEDM_COL2_PIN, PIN_OUTPUT, PullUp, 1);
-DigitalInOut col3(LEDM_COL3_PIN, PIN_OUTPUT, PullUp, 1);
-DigitalInOut col4(LEDM_COL4_PIN, PIN_OUTPUT, PullUp, 1);
+DigitalInOut col1(LEDM_COL1_PIN, PIN_OUTPUT, PullUp, 0);
+DigitalInOut col2(LEDM_COL2_PIN, PIN_OUTPUT, PullUp, 0);
+DigitalInOut col3(LEDM_COL3_PIN, PIN_OUTPUT, PullUp, 0);
+DigitalInOut col4(LEDM_COL4_PIN, PIN_OUTPUT, PullUp, 0);
 
 uint8_t LED_array[16]{};
 Thread led_thread;
@@ -55,38 +55,38 @@ void control_LED_array() {
 
     while (true) {
         // Set output drains for LED col 1:
-        row1 = (LED_array[0])  ? 1 : 0;
-        row2 = (LED_array[4])  ? 1 : 0;
-        row3 = (LED_array[8])  ? 1 : 0;
-        row4 = (LED_array[12]) ? 1 : 0;
+        row1 = (LED_array[0])  ? 0 : 1;
+        row2 = (LED_array[4])  ? 0 : 1;
+        row3 = (LED_array[8])  ? 0 : 1;
+        row4 = (LED_array[12]) ? 0 : 1;
         col1 = 1;
         ThisThread::sleep_for(COL_DELAY);
         col1 = 0;
 
 
         // Set output drains for LED col 2:
-        row1 = (LED_array[1])  ? 1 : 0;
-        row2 = (LED_array[5])  ? 1 : 0;
-        row3 = (LED_array[9])  ? 1 : 0;
-        row4 = (LED_array[13]) ? 1 : 0;
+        row1 = (LED_array[1])  ? 0 : 1;
+        row2 = (LED_array[5])  ? 0 : 1;
+        row3 = (LED_array[9])  ? 0 : 1;
+        row4 = (LED_array[13]) ? 0 : 1;
         col2 = 1;
         ThisThread::sleep_for(COL_DELAY);
         col2 = 0;
 
         // Set output drains for LED col 3:
-        row1 = (LED_array[2])  ? 1 : 0;
-        row2 = (LED_array[6])  ? 1 : 0;
-        row3 = (LED_array[10]) ? 1 : 0;
-        row4 = (LED_array[14]) ? 1 : 0;
+        row1 = (LED_array[2])  ? 0 : 1;
+        row2 = (LED_array[6])  ? 0 : 1;
+        row3 = (LED_array[10]) ? 0 : 1;
+        row4 = (LED_array[14]) ? 0 : 1;
         col3 = 1;
         ThisThread::sleep_for(COL_DELAY);
         col3 = 0;
 
         // Set output drains for LED col 4:
-        row1 = (LED_array[3])  ? 1 : 0;
-        row2 = (LED_array[7])  ? 1 : 0;
-        row3 = (LED_array[11]) ? 1 : 0;
-        row4 = (LED_array[15]) ? 1 : 0;
+        row1 = (LED_array[3])  ? 0 : 1;
+        row2 = (LED_array[7])  ? 0 : 1;
+        row3 = (LED_array[11]) ? 0 : 1;
+        row4 = (LED_array[15]) ? 0 : 1;
         col4 = 1;
         ThisThread::sleep_for(COL_DELAY);
         col4 = 0;
